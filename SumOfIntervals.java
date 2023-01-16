@@ -1,5 +1,6 @@
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.Stack;
 import java.util.stream.IntStream;
@@ -14,31 +15,18 @@ public class SumOfIntervals {
     }
 
     private static int sumIntervals(int[][] ints) {
-        if (ints == null || ints.length == 0) {
-            return 0;
-        }
-        // mapping to Interval
-        var intervals = Arrays.stream(ints).map(x -> new Interval(x[0], x[1])).toArray(Interval[]::new);
-        // empty stack of Intervals
+        if (ints == null || ints.length == 0) { return 0; }
+        var intervals = Arrays.stream(ints).sorted(Comparator.comparingInt(x -> x[0])).map(x -> new Interval(x[0], x[1])).toArray(Interval[]::new);
         Stack<Interval> stack = new Stack<>();
-        // sorting at increasing order of start time
-        Arrays.sort(intervals, new Comparator<Interval>(){
-            @Override
-            public int compare(Interval i1, Interval i2) {
-                return i1.start - i2.start;
-            }
-        });
-        // push first interval to stack
         stack.push(intervals[0]);
         // start from the next interval and merge if necessary
         for (int i = 1; i < intervals.length; i++) {
-            // get interval from stack top
             Interval top = stack.peek();
             // if no overlap -> push to stack
             if (top.end < intervals[i].start) {
                 stack.push(intervals[i]);
             }
-            // else if ending time of current interval is more -> update ending time of top
+            // else if ending time of this interval is higher then ending time of top -> update top
             else if (top.end < intervals[i].end) {
                 top.end = intervals[i].end;
                 stack.pop();
