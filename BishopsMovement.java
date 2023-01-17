@@ -2,10 +2,10 @@ import java.util.ArrayList;
 
 public class BishopsMovement {
     public static void main(String[] args) {
-//        System.out.println(bishop("a1", "b4", 2)); // true
-//        System.out.println(bishop("a1", "b5", 2)); // false
-//        System.out.println(bishop("e6", "a1", 2)); // false
-//        System.out.println(bishop("a8", "h7", 0)); // false
+        System.out.println(bishop("a1", "b4", 2)); // true
+        System.out.println(bishop("a1", "b5", 2)); // false
+        System.out.println(bishop("e6", "a1", 2)); // false
+        System.out.println(bishop("a8", "h7", 0)); // false
         System.out.println(bishop("c4", "h1", 1)); // false
     }
 
@@ -27,16 +27,13 @@ public class BishopsMovement {
                 } else {
                     whites.add(Character.toString(97 + i) + (1 + j));
                 }
-                if ( i == j) {
-//                    if ((i + posStartDec[0] % 8) < 8 && (1 + (j + posStartDec[1]) < 9)){
-                        diagonals.add(Character.toString(97 + (i + posStartDec[0]) % 8) + (1 + (j + posStartDec[1]) % 8 ));
-
-
-//                    diagonals.add(Character.toString(97 + (i + posStartDec[0]) % 8) + (1 + ((posStartDec[0] + i < 8) ? (posStartDec[1] - j) : (posStartDec[1] - j + 8))));
+                if (i == j) {
+                    if ((i + posStartDec[0] % 8) < 8 && (1 + (j + posStartDec[1]) < 9)) {
+                        diagonals.add(Character.toString(97 + (i + posStartDec[0]) % 8) + (1 + ((posStartDec[0] + i < 8) ? (posStartDec[1] - j) : (posStartDec[1] - j + 8))));
+                    }
                 }
             }
         }
-        System.out.println(diagonals);
         if (blacks.contains(posStart) && !blacks.contains(posEnd)) {
             return false;
         }
