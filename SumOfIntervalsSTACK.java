@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.Stack;
 import java.util.stream.IntStream;
 
-public class SumOfIntervals {
+public class SumOfIntervalsSTACK {
 
     public static void main(String[] args) {
         System.out.println(sumIntervals(new int[][]{{1, 4}, {7, 10}, {3, 5}})); // 7

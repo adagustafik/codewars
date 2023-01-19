@@ -34,21 +34,4 @@ public class CountTripletsMEDIUMhashmapFORspeed {
         }
         return numberOfTriplets;
     }
-
-//    The idea is to iterate using the middle element i of the triplet, and maintaining two hashmaps/dictionaries,
-//    one which holds all the elements before i (element/r), and the other holds all the elements after i (element * r)
-//    At the beginning of each iteration, remove i from the after hashmap, and at the end of each iteration, add i to the before hashmap.
-//    DID NOT WORK ON EDGE CASES
-//        HashMap<Long, Long> prev = new HashMap<>(); // start from 0, previous is null
-//        HashMap<Long, Long> next = arr.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting())).entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, Long::sum, HashMap::new));
-//        int tripleCount = 0;
-//        for (int i = 0; i < arr.size() - 1; i++) {
-//            Long l = arr.get(i);
-//            next.put(l, next.getOrDefault(l, 0L) - 1);
-//            if (l % r == 0 && prev.containsKey(l / r) && next.containsKey(l * r)) {
-//                tripleCount += prev.get(l / r) * next.get(l * r);
-//            }
-//            prev.put(l, prev.getOrDefault(l, 0L) + 1);
-//        }
-//        return tripleCount;
 }
